@@ -36,6 +36,7 @@ function playRound(){
 
     if(playerSelection == computerSelection){
         alert ("It's a draw!");
+        totalRounds++;
         return
     }else if(playerSelection == "paper" && computerSelection == "rock" ){
         userScore++;
@@ -86,13 +87,3 @@ function playRound(){
         }
         
     }
-
-    //game(); //Plays game from the beginning
-
-
-    function uiPlayGame() {
-        
-    }
-
-
-    //test();
