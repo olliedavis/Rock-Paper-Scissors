@@ -7,6 +7,10 @@ let computerScore = 0;
 let userScore = 0;
 let totalRounds = 0;
 let playerSelection;
+let computerCount = document.getElementById("computer-score");
+let userCount = document.getElementById("user-score");
+let roundRount = document.getElementById("total-rounds");
+
 
 const rockSelected = document.getElementById("rock");
     rockSelected.addEventListener("click", () => {
@@ -35,37 +39,44 @@ function playRound(){
     let computerSelection = computerOptions[Math.floor(Math.random() * computerOptions.length)];
 
     if(playerSelection == computerSelection){
-        alert ("It's a draw!");
         totalRounds++;
+        scoreUpdate();
+        alert ("It's a draw!");
         return
     }else if(playerSelection == "paper" && computerSelection == "rock" ){
         userScore++;
         totalRounds++;
+        scoreUpdate();
         alert (" You win! Paper beats rock.\n Computer Score: " + computerScore + "\n Your Score: " + userScore);
         return
     } else if(playerSelection == "paper" && computerSelection == "scissors"){
         computerScore++;
         totalRounds++;
+        scoreUpdate();
         alert (" You Lose! Scissors beats Paper.\n Computer Score: " + computerScore + "\n Your Score :" + userScore);
         return
     } else if(playerSelection == "rock" && computerSelection == "scissors"){
         userScore++;
         totalRounds++
+        scoreUpdate();
         alert (" You Win! Rock beats Scissors.\n Computer Score: " + computerScore + "\n Your Score: " + userScore);
         return
     } else if(playerSelection == "rock" && computerSelection == "paper"){
         computerScore++;
         totalRounds++
+        scoreUpdate();
         alert (" You Lose! Paper beats rock.\n Computer Score: " + computerScore + "\n Your Score: " + userScore)
         return
     } else if (playerSelection == "scissors" && computerSelection == "paper"){
         userScore++;
-        totalRounds++
+        totalRounds++;
+        scoreUpdate();
         alert (" You Win! Scissors beats Paper.\n Computer Score: " + computerScore + "\n Your Score: " + userScore)
         return
     } else if (playerSelection == "scissors" && computerSelection == "rock"){
         computerScore++;
         totalRounds++;
+        scoreUpdate();
         alert (" You Lose! Rock beats Scissors.\n Computer Score: " + computerScore + "\n Your Score: " + userScore)
         return
     } else{
@@ -73,7 +84,8 @@ function playRound(){
        return
     }
 }
-    function game(){
+    //Previous  gameplay
+    /*function game(){
         do{             
             playRound();
         }
@@ -86,4 +98,10 @@ function playRound(){
             alert("Uh oh, something has gone wrong");
         }
         
+    }*/
+    
+    function scoreUpdate(){
+        computerCount.textContent = `Computer's Score: ${computerScore}`;
+        userCount.textContent = `Your Score: ${userScore}`;
+        roundRount.textContent = `Total Rounds Played: ${totalRounds}`;
     }
