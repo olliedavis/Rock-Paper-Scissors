@@ -14,7 +14,7 @@ let roundRount = document.getElementById("total-rounds");
 let userHand= document.getElementById("user-hand");
 let computerHand = document.getElementById("computer-hand");
 let result = document.getElementById("result");
-
+let optionBtn = document.querySelectorAll("button.game-buttons")
 
 const rockSelected = document.getElementById("rock");
     rockSelected.addEventListener("click", () => {
@@ -44,76 +44,62 @@ function playRound(){
 
     if(playerSelection == computerSelection){
         totalRounds++;
-        scoreUpdate();
         inputUpdate()
+        scoreUpdate();
         result.textContent = "It'a draw!";
         return;
     }else if(playerSelection == "paper" && computerSelection == "rock" ){
         userScore++;
         totalRounds++;
-        scoreUpdate();
         inputUpdate()
+        scoreUpdate();
         result.textContent = "Result: You win! Paper beats rock";
         return;
     } else if(playerSelection == "paper" && computerSelection == "scissors"){
         computerScore++;
         totalRounds++;
-        scoreUpdate();
         inputUpdate()
+        scoreUpdate();
         result.textContent = "Result: You Lose! Scissors beats Paper";
         return;
     } else if(playerSelection == "rock" && computerSelection == "scissors"){
         userScore++;
         totalRounds++
-        scoreUpdate();
         inputUpdate();
+        scoreUpdate();
         result.textContent = "Result: You Win! Rock beats Scissors";
         return;
     } else if(playerSelection == "rock" && computerSelection == "paper"){
         computerScore++;
         totalRounds++
-        scoreUpdate();
         inputUpdate();
+        scoreUpdate();
         result.textContent = "Result: You Lose! Paper beats Rock"
         return;
     } else if (playerSelection == "scissors" && computerSelection == "paper"){
         userScore++;
         totalRounds++;
-        scoreUpdate();
         inputUpdate();
+        scoreUpdate();
         result.textContent = "Result: You Win! Scissors beats Paper";
         return;
     } else if (playerSelection == "scissors" && computerSelection == "rock"){
         computerScore++;
         totalRounds++;
-        scoreUpdate();
         inputUpdate();
+        scoreUpdate();
         result.textContent = "Result: You Lose! Rock beats Scissors";
     } else{
        alert ("Input not recognised, please enter Rock, Paper, or Scissors")
        return
     }
 }
-    //Previous  gameplay
-    /*function game(){
-        do{             
-            playRound();
-        }
-        while(userScore != 3 && computerScore != 3 );
-        if(userScore == 3){
-            alert("You have won!");
-        } else if (computerScore == 3){
-            alert("The computer has won");
-        } else {
-            alert("Uh oh, something has gone wrong");
-        }
-        
-    }*/
-    
+
     function scoreUpdate(){
         computerCount.textContent = `Computer's Score: ${computerScore}`;
         userCount.textContent = `Your Score: ${userScore}`;
         roundRount.textContent = `Total Rounds Played: ${totalRounds}`;
+        scoreCheck();
     }
 
     function inputUpdate(){
@@ -122,3 +108,17 @@ function playRound(){
         userHand.textContent = `Your Choice: ${upperUserHand}`;
         computerHand.textContent = `Computer's Choice: ${upperComputerScore}`;
     }
+
+    function scoreCheck(){
+        if(userScore === 3){
+            alert("You have won!")
+        }else if(computerScore == 3){
+            alert("The computer has won!");
+    }}
+    
+
+
+
+
+
+
