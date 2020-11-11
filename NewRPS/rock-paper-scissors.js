@@ -7,9 +7,13 @@ let computerScore = 0;
 let userScore = 0;
 let totalRounds = 0;
 let playerSelection;
+let computerSelection;
 let computerCount = document.getElementById("computer-score");
 let userCount = document.getElementById("user-score");
 let roundRount = document.getElementById("total-rounds");
+let userHand= document.getElementById("user-hand");
+let computerHand = document.getElementById("computer-hand");
+let result = document.getElementById("result");
 
 
 const rockSelected = document.getElementById("rock");
@@ -36,49 +40,55 @@ const scissorsSelected = document.getElementById("scissors");
 
 
 function playRound(){
-    let computerSelection = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+    computerSelection = computerOptions[Math.floor(Math.random() * computerOptions.length)];
 
     if(playerSelection == computerSelection){
         totalRounds++;
         scoreUpdate();
-        alert ("It's a draw!");
-        return
+        inputUpdate()
+        result.textContent = "It'a draw!";
+        return;
     }else if(playerSelection == "paper" && computerSelection == "rock" ){
         userScore++;
         totalRounds++;
         scoreUpdate();
-        alert (" You win! Paper beats rock.\n Computer Score: " + computerScore + "\n Your Score: " + userScore);
-        return
+        inputUpdate()
+        result.textContent = "Result: You win! Paper beats rock";
+        return;
     } else if(playerSelection == "paper" && computerSelection == "scissors"){
         computerScore++;
         totalRounds++;
         scoreUpdate();
-        alert (" You Lose! Scissors beats Paper.\n Computer Score: " + computerScore + "\n Your Score :" + userScore);
-        return
+        inputUpdate()
+        result.textContent = "Result: You Lose! Scissors beats Paper";
+        return;
     } else if(playerSelection == "rock" && computerSelection == "scissors"){
         userScore++;
         totalRounds++
         scoreUpdate();
-        alert (" You Win! Rock beats Scissors.\n Computer Score: " + computerScore + "\n Your Score: " + userScore);
-        return
+        inputUpdate();
+        result.textContent = "Result: You Win! Rock beats Scissors";
+        return;
     } else if(playerSelection == "rock" && computerSelection == "paper"){
         computerScore++;
         totalRounds++
         scoreUpdate();
-        alert (" You Lose! Paper beats rock.\n Computer Score: " + computerScore + "\n Your Score: " + userScore)
-        return
+        inputUpdate();
+        result.textContent = "Result: You Lose! Paper beats Rock"
+        return;
     } else if (playerSelection == "scissors" && computerSelection == "paper"){
         userScore++;
         totalRounds++;
         scoreUpdate();
-        alert (" You Win! Scissors beats Paper.\n Computer Score: " + computerScore + "\n Your Score: " + userScore)
-        return
+        inputUpdate();
+        result.textContent = "Result: You Win! Scissors beats Paper";
+        return;
     } else if (playerSelection == "scissors" && computerSelection == "rock"){
         computerScore++;
         totalRounds++;
         scoreUpdate();
-        alert (" You Lose! Rock beats Scissors.\n Computer Score: " + computerScore + "\n Your Score: " + userScore)
-        return
+        inputUpdate();
+        result.textContent = "Result: You Lose! Rock beats Scissors";
     } else{
        alert ("Input not recognised, please enter Rock, Paper, or Scissors")
        return
@@ -104,4 +114,11 @@ function playRound(){
         computerCount.textContent = `Computer's Score: ${computerScore}`;
         userCount.textContent = `Your Score: ${userScore}`;
         roundRount.textContent = `Total Rounds Played: ${totalRounds}`;
+    }
+
+    function inputUpdate(){
+        let upperUserHand = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+        let upperComputerScore = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
+        userHand.textContent = `Your Choice: ${upperUserHand}`;
+        computerHand.textContent = `Computer's Choice: ${upperComputerScore}`;
     }
