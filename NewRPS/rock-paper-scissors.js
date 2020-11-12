@@ -16,27 +16,32 @@ let computerHand = document.getElementById("computer-hand");
 let result = document.getElementById("result");
 let optionBtn = document.querySelectorAll("button.game-buttons")
 
-const rockSelected = document.getElementById("rock");
-    rockSelected.addEventListener("click", () => {
-        playerSelection = "rock";
-        playRound();
-        return;
-    });
+document.getElementById("rock").addEventListener("click", rockButton);
+document.getElementById("paper").addEventListener("click", paperButton);
+document.getElementById("scissors").addEventListener("click", scissorButton);
+document.getElementById("reset").addEventListener("click", resetButton);
 
-const paperSelected = document.getElementById("paper");
-    paperSelected.addEventListener("click", () => {
-        playerSelection = "paper";
-        playRound();
-        return;
-    });
 
-const scissorsSelected = document.getElementById("scissors");
-    scissorsSelected.addEventListener("click", () => {
-        playerSelection = "scissors";
-        playRound();
-        return;
-    });
+function rockButton() {
+    playerSelection = "rock";
+    playRound();
+    return;
+    };
 
+function paperButton(){
+    playerSelection = "paper";
+    playRound();
+    return;
+    }; 
+
+function scissorButton(){
+    playerSelection = "scissors";
+    playRound();
+    return;
+    }; 
+function resetButton (){
+    location.reload();
+}
 
 
 function playRound(){
@@ -95,27 +100,34 @@ function playRound(){
     }
 }
 
-    function scoreUpdate(){
+function scoreUpdate(){
         computerCount.textContent = `Computer's Score: ${computerScore}`;
         userCount.textContent = `Your Score: ${userScore}`;
         roundRount.textContent = `Total Rounds Played: ${totalRounds}`;
         scoreCheck();
     }
 
-    function inputUpdate(){
+function inputUpdate(){
         let upperUserHand = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
         let upperComputerScore = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
         userHand.textContent = `Your Choice: ${upperUserHand}`;
         computerHand.textContent = `Computer's Choice: ${upperComputerScore}`;
     }
 
-    function scoreCheck(){
+function scoreCheck(){
         if(userScore === 3){
             alert("You have won!")
+            disableButton();
         }else if(computerScore == 3){
             alert("The computer has won!");
+            disableButton();
     }}
     
+function disableButton() {
+    document.getElementById("rock").removeEventListener("click", rockButton)
+    document.getElementById("paper").removeEventListener("click", paperButton)
+    document.getElementById("scissors").removeEventListener("click", scissorButton)
+    }
 
 
 
