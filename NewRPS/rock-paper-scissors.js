@@ -51,7 +51,7 @@ function playRound(){
         totalRounds++;
         inputUpdate()
         scoreUpdate();
-        result.textContent = "It'a draw!";
+        result.textContent = "Result: It'a draw!";
         return;
     }else if(playerSelection == "paper" && computerSelection == "rock" ){
         userScore++;
