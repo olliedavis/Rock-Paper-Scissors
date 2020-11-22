@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+body {
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+}
+
+h1 {
+    font-size: 5vw;
+}
+
+h2{
+    font-size: 3vw;
+}
+
+header{
+    border-bottom: 1px solid black;
+}
+
+h3 {
+    font-size: 2vw;
+    padding-top: 40px;
+}
+
+.game-buttons {
+    padding: 10px 20px 10px 20px;
+    margin: 5px;
+}
+
